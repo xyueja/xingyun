@@ -1,11 +1,11 @@
 package com.xingyun.common.base;
 
-import com.xingyun.common.base.resp.ResponseCode;
+import com.xingyun.common.base.resp.BaseRespCode;
 
 /**
  * 基础响应码
  */
-public enum BaseRespCode implements ResponseCode {
+public enum CommonRespCode implements BaseRespCode {
     /**
      * 成功
      */
@@ -14,7 +14,22 @@ public enum BaseRespCode implements ResponseCode {
     /**
      * 失败
      */
-    FAIL(1, "fail");
+    FAIL(1, "fail"),
+
+    /**
+     * 访问被拒绝
+     */
+    ACCESS_DENIED(403, "Access Denied"),
+
+    /**
+     * 系统内部错误
+     */
+    SYSTEM_INNER_ERROR(500, "System Inner Error"),
+
+    /**
+     * 系统未知错误
+     */
+    SYSTEM_UNKNOW_ERROR(500, "System Inner Error");
 
     private final int code;
 
@@ -24,9 +39,9 @@ public enum BaseRespCode implements ResponseCode {
      * 构造函数
      *
      * @param code 编码
-     * @param msg 编码信息
+     * @param msg  编码信息
      */
-    BaseRespCode(int code, String msg) {
+    CommonRespCode(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

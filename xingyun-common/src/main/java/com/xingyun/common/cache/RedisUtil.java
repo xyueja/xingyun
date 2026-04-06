@@ -2,14 +2,16 @@
  * Copyright (c) 2026 XingYun. All rights reserved.
  */
 
-package com.xingyun.common.util.cache;
+package com.xingyun.common.cache;
 
 import com.xingyun.common.constant.CacheConstants;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,8 +22,16 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class RedisUtil {
+    private static RedisUtil redisUtil;
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    @PostConstruct
+    public void init() {
+        redisUtil = this;
+        redisUtil.redisTemplate = redisTemplate;
+    }
 
     /**
      * 判断key是否存在
@@ -29,17 +39,18 @@ public class RedisUtil {
      * @param key 键
      * @return 是否存在
      */
-    public boolean hasKey(String key) {
-        return redisTemplate.hasKey(key);
+    public static boolean hasKey(String key) {
+        return redisUtil.redisTemplate.hasKey(key);
     }
 
     /**
-     * 删除缓存
+     * 删除单个对象
      *
-     * @param keys 键（可以传多个）
+     * @param key 缓存key
+     * @return boolean
      */
-    public void delete(String... keys) {
-        redisTemplate.delete(List.of(keys));
+    public static boolean delete(final String key) {
+        return redisUtil.redisTemplate.delete(key);
     }
 
     /**
@@ -48,24 +59,21 @@ public class RedisUtil {
      * @param key 键
      * @return 值
      */
-    public String get(String key) {
-        return get(key, String.class);
+    public static String get(String key) {
+        return Objects.toString(redisUtil.redisTemplate.opsForValue().get(key), "");
     }
 
     /**
      * 获取缓存（基本类型）
      *
-     * @param key   键
-     * @param clazz 值类型
-     * @param <T>   泛型
+     * @param key 键
+     * @param <T> 泛型
      * @return 值
      */
-    public <T> T get(String key, Class<T> clazz) {
-        Object value = redisTemplate.opsForValue().get(key);
-        if (clazz.isInstance(value)) {
-            return (T) value;
-        }
-        return null;
+    @Nullable
+    public static <T> T getObj(String key) {
+        Object value = redisUtil.redisTemplate.opsForValue().get(key);
+        return value == null ? null : (T) value;
     }
 
     /**
@@ -74,7 +82,7 @@ public class RedisUtil {
      * @param key   键
      * @param value 值
      */
-    public void set(String key, Object value) {
+    public static void set(String key, Object value) {
         set(key, value, CacheConstants.ONE_MINUTE);
     }
 
@@ -85,7 +93,7 @@ public class RedisUtil {
      * @param value 值
      * @param time  时间（秒）
      */
-    public void set(String key, Object value, long time) {
+    public static void set(String key, Object value, long time) {
         set(key, value, time, TimeUnit.SECONDS);
     }
 
@@ -97,7 +105,7 @@ public class RedisUtil {
      * @param time     时间（秒）
      * @param timeUnit 时间单位
      */
-    public void set(String key, Object value, long time, TimeUnit timeUnit) {
-        redisTemplate.opsForValue().set(key, value, time, timeUnit);
+    public static void set(String key, Object value, long time, TimeUnit timeUnit) {
+        redisUtil.redisTemplate.opsForValue().set(key, value, time, timeUnit);
     }
 }

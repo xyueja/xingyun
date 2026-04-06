@@ -10,7 +10,7 @@
 
     <artifactId>xingyun-uniportal</artifactId>
     <name>xingyun-uniportal</name>
-    <description>星云统一登陆入口</description>
+    <description>星云统一登陆认证服务</description>
 
     <dependencies>
         <dependency>

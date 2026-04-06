@@ -1,6 +1,6 @@
 package com.xingyun.common.base;
 
-import com.xingyun.common.util.json.JsonUtil;
+import com.xingyun.common.json.JsonUtil;
 
 import java.util.HashMap;
 

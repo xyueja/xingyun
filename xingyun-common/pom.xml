@@ -14,6 +14,16 @@
     <description>星云通用工具</description>
 
     <dependencies>
+        <!-- springboot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+
         <!--常用工具类 -->
         <!-- lombok -->
         <dependency>

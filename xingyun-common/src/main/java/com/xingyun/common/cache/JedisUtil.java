@@ -2,12 +2,12 @@
  * Copyright (c) 2026 XingYun. All rights reserved.
  */
 
-package com.xingyun.common.util.cache;
+package com.xingyun.common.cache;
 
 import com.xingyun.common.constant.BaseConstants;
 import com.xingyun.common.constant.CacheConstants;
-import com.xingyun.common.util.json.JsonUtil;
-import com.xingyun.common.util.json.Type;
+import com.xingyun.common.json.JsonUtil;
+import com.xingyun.common.json.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisCluster;

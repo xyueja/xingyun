@@ -15,4 +15,9 @@ public class CacheConstants {
      * 默认过期时间1分钟（60秒）
      */
     public static final long ONE_MINUTE = 60;
+
+    /**
+     * 验证码 redis key
+     */
+    public static final String CAPTCHA_KEY_PREFIX = "captcha_";
 }

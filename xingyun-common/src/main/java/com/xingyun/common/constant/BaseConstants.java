@@ -18,4 +18,9 @@ public class BaseConstants {
      * OK
      */
     public static final String OK = "OK";
+
+    /**
+     * 逗号
+     */
+    public static final String COMMA = ",";
 }

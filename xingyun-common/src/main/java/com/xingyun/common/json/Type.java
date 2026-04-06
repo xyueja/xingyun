@@ -2,7 +2,7 @@
  * Copyright (c) 2026 XingYun. All rights reserved.
  */
 
-package com.xingyun.common.util.json;
+package com.xingyun.common.json;
 
 import com.alibaba.fastjson2.TypeReference;
 

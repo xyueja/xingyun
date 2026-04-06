@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BasePageReq {
+public class BasePageRequest extends BaseRequest {
     private int pageIndex;
 
     private int pageSize;
