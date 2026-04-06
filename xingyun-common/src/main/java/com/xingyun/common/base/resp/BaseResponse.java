@@ -3,7 +3,7 @@ package com.xingyun.common.base.resp;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.xingyun.common.base.CommonRespCode;
+import com.xingyun.common.base.CommonCode;
 import com.xingyun.common.json.JsonUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public class BaseResponse<T> {
      * @param respCode 基础响应码
      * @return BaseResponse
      */
-    public static <T> BaseResponse<T> of(BaseRespCode respCode) {
+    public static <T> BaseResponse<T> of(BaseCode respCode) {
         return of(respCode.getCode(), respCode.getMsg());
     }
 
@@ -44,7 +44,7 @@ public class BaseResponse<T> {
      * @param errorMsg 错误信息
      * @return BaseResponse
      */
-    public static <T> BaseResponse<T> of(BaseRespCode respCode, String errorMsg) {
+    public static <T> BaseResponse<T> of(BaseCode respCode, String errorMsg) {
         return of(respCode.getCode(), errorMsg);
     }
 
@@ -63,13 +63,22 @@ public class BaseResponse<T> {
     }
 
     /**
+     * 构建成功的响应，响应体不需要返回数据，有状态码就行
+     *
+     * @return BaseResponse
+     */
+    public static <T> BaseResponse<T> success() {
+        return of(CommonCode.SUCCESS);
+    }
+
+    /**
      * 构建成功的响应
      *
      * @param data 数据
      * @return BaseResponse
      */
     public static <T> BaseResponse<T> success(T data) {
-        BaseResponse<T> response = of(CommonRespCode.SUCCESS);
+        BaseResponse<T> response = of(CommonCode.SUCCESS);
         response.setResult(data);
         return response;
     }
@@ -81,7 +90,7 @@ public class BaseResponse<T> {
      * @return BaseResponse 基础响应
      */
     public static BaseResponse<String> fail(String errorMsg) {
-        return BaseResponse.of(CommonRespCode.FAIL, errorMsg);
+        return BaseResponse.of(CommonCode.FAIL, errorMsg);
     }
 
     /**
@@ -90,8 +99,19 @@ public class BaseResponse<T> {
      * @param respCode 基础响应码
      * @return BaseResponse 基础响应
      */
-    public static BaseResponse<String> fail(BaseRespCode respCode) {
+    public static BaseResponse<String> fail(BaseCode respCode) {
         return BaseResponse.of(respCode.getCode(), respCode.getMsg());
+    }
+
+    /**
+     * 构建失败的响应
+     *
+     * @param respCode 基础响应码
+     * @param errorMsg 错误信息
+     * @return BaseResponse 基础响应
+     */
+    public static BaseResponse<String> fail(BaseCode respCode, String errorMsg) {
+        return BaseResponse.of(respCode.getCode(), errorMsg);
     }
 
     /**
@@ -112,7 +132,7 @@ public class BaseResponse<T> {
      */
     @JsonIgnore
     public boolean isSuccess() {
-        return this.code == CommonRespCode.SUCCESS.getCode();
+        return this.code == CommonCode.SUCCESS.getCode();
     }
 
     @Override

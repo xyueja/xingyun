@@ -4,7 +4,7 @@
 
 package com.xingyun.common.exception;
 
-import com.xingyun.common.base.CommonRespCode;
+import com.xingyun.common.base.CommonCode;
 import com.xingyun.common.base.resp.BaseResponse;
 import com.xingyun.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
     public BaseResponse<String> handleAccessDeniedException(HttpServletRequest request, AccessDeniedException e) {
         String requestUri = request.getRequestURI();
         log.error("[GlobalExceptionHandler.accessDenied]: uri={}", requestUri, e);
-        return BaseResponse.fail(CommonRespCode.ACCESS_DENIED);
+        return BaseResponse.fail(CommonCode.ACCESS_DENIED);
     }
 
     /**
@@ -94,7 +94,7 @@ public class GlobalExceptionHandler {
     public BaseResponse<String> handleException(HttpServletRequest request, Exception e) {
         String requestUri = request.getRequestURI();
         log.error("[GlobalExceptionHandler.exception]: uri={}", requestUri, e);
-        return BaseResponse.fail(CommonRespCode.SYSTEM_INNER_ERROR);
+        return BaseResponse.fail(CommonCode.SYSTEM_INNER_ERROR);
     }
 
     /**
@@ -107,6 +107,6 @@ public class GlobalExceptionHandler {
     public BaseResponse<String> handleRuntimeException(HttpServletRequest request, RuntimeException e) {
         String requestUri = request.getRequestURI();
         log.error("[GlobalExceptionHandler.runtimeException]: uri={}", requestUri, e);
-        return BaseResponse.fail(CommonRespCode.SYSTEM_UNKNOW_ERROR);
+        return BaseResponse.fail(CommonCode.SYSTEM_UNKNOW_ERROR);
     }
 }

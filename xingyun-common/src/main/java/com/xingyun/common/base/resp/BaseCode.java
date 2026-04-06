@@ -3,7 +3,7 @@ package com.xingyun.common.base.resp;
 /**
  * 基础响应码
  */
-public interface BaseRespCode {
+public interface BaseCode {
     /**
      * 获取错误码
      *

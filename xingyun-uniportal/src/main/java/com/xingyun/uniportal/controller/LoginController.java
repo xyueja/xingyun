@@ -4,6 +4,7 @@
 
 package com.xingyun.uniportal.controller;
 
+import com.xingyun.common.base.CommonCode;
 import com.xingyun.common.base.resp.BaseResponse;
 import com.xingyun.common.cache.RedisUtil;
 import com.xingyun.common.constant.CacheConstants;
@@ -34,9 +35,9 @@ public class LoginController {
         boolean isCaptchaValid = validateCaptcha(loginRequest.getCode(), captchaKey);
         if (!isCaptchaValid) {
             log.error("[LoginService.auth]: captcha is not valid");
-            return BaseResponse.fail("");
+            return BaseResponse.fail(CommonCode.INVALID);
         }
-        return BaseResponse.success("");
+        return BaseResponse.success();
     }
 
     private boolean validateCaptcha(String code, String captchaKey) {
@@ -47,6 +48,6 @@ public class LoginController {
         }
 
         RedisUtil.delete(redisKey);
-        return code.equalsIgnoreCase(captcha);
+        return captcha.equalsIgnoreCase(code);
     }
 }

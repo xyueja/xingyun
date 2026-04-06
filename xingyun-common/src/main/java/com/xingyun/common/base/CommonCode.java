@@ -1,20 +1,30 @@
 package com.xingyun.common.base;
 
-import com.xingyun.common.base.resp.BaseRespCode;
+import com.xingyun.common.base.resp.BaseCode;
 
 /**
  * 基础响应码
  */
-public enum CommonRespCode implements BaseRespCode {
+public enum CommonCode implements BaseCode {
     /**
      * 成功
      */
-    SUCCESS(0, "success"),
+    SUCCESS(200, "success"),
 
     /**
      * 失败
      */
-    FAIL(1, "fail"),
+    FAIL(101, "fail"),
+
+    /**
+     * 参数非法
+     */
+    ILLEGAL(104, "Parameter Illegal"),
+
+    /**
+     * 无效
+     */
+    INVALID(105, "Parameter Invalid"),
 
     /**
      * 访问被拒绝
@@ -41,7 +51,7 @@ public enum CommonRespCode implements BaseRespCode {
      * @param code 编码
      * @param msg  编码信息
      */
-    CommonRespCode(int code, String msg) {
+    CommonCode(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
