@@ -7,6 +7,7 @@ package com.xingyun.common.time;
 import com.xingyun.common.constant.TimeConstants;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
@@ -35,7 +36,7 @@ public class TimeUtils {
      * @return String
      */
     public static String format(long time, String pattern) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern).withZone(ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return format(time, formatter);
     }
 
@@ -47,7 +48,10 @@ public class TimeUtils {
      * @return String
      */
     public static String format(long time, DateTimeFormatter formatter) {
-        Instant instant = Instant.ofEpochMilli(time);
-        return formatter.format(instant);
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.systemDefault());
+        return localDateTime.format(formatter);
+    }
+
+    public static void main(String[] args) {
     }
 }

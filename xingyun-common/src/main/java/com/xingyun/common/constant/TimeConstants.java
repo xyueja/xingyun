@@ -4,7 +4,6 @@
 
 package com.xingyun.common.constant;
 
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -27,10 +26,10 @@ public class TimeConstants {
     /**
      * 时间模式-日期
      */
-    public static final DateTimeFormatter FORMATTER_DATE = DateTimeFormatter.ofPattern(DATE).withZone(ZoneId.systemDefault());
+    public static final DateTimeFormatter FORMATTER_DATE = DateTimeFormatter.ofPattern(DATE);
 
     /**
      * 时间模式-日期&时分秒
      */
-    public static final DateTimeFormatter FORMATTER_DATE_TIME = DateTimeFormatter.ofPattern(DATE_TIME).withZone(ZoneId.systemDefault());
+    public static final DateTimeFormatter FORMATTER_DATE_TIME = DateTimeFormatter.ofPattern(DATE_TIME);
 }

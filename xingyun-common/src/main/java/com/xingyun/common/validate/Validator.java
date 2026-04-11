@@ -22,17 +22,23 @@ public class Validator {
     // 校验规则集
     private List<ValidateRule<Object>> rules = new ArrayList<>();
 
-    public Validator addRule(ValidateRule<Object> rule) {
+    /**
+     * 添加校验规则
+     *
+     * @param rule 规则
+     * @return Validator
+     */
+    public Validator add(ValidateRule<Object> rule) {
         rules.add(rule);
         return this;
     }
 
+    /**
+     * 校验
+     *
+     * @return boolean
+     */
     public boolean verify() {
-        for (ValidateRule<Object> rule : rules) {
-            if (rule.getPredicate().test(rule.getValue())) {
-                return false;
-            }
-        }
-        return false;
+        return rules.stream().allMatch(ValidateRule::isValid);
     }
 }

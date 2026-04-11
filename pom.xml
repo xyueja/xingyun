@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springboot.version>3.5.11</springboot.version>
         <springboot.thymeleaf.version>4.0.5</springboot.thymeleaf.version>
+        <springboot.mybatis.version>3.0.5</springboot.mybatis.version>
         <commons.io.version>2.21.0</commons.io.version>
         <fastjson.version>2.0.61</fastjson.version>
         <jackson.version>2.19.4</jackson.version>
@@ -61,6 +62,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
                 <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${springboot.mybatis.version}</version>
             </dependency>
 
             <!-- commons-io -->

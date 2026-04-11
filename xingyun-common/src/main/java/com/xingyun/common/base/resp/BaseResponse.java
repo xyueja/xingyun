@@ -89,7 +89,7 @@ public class BaseResponse<T> {
      * @param errorMsg 错误信息
      * @return BaseResponse 基础响应
      */
-    public static BaseResponse<String> fail(String errorMsg) {
+    public static <T> BaseResponse<T> fail(String errorMsg) {
         return BaseResponse.of(CommonCode.FAIL, errorMsg);
     }
 
@@ -99,7 +99,7 @@ public class BaseResponse<T> {
      * @param respCode 基础响应码
      * @return BaseResponse 基础响应
      */
-    public static BaseResponse<String> fail(BaseCode respCode) {
+    public static <T> BaseResponse<T> fail(BaseCode respCode) {
         return BaseResponse.of(respCode.getCode(), respCode.getMsg());
     }
 
@@ -110,7 +110,7 @@ public class BaseResponse<T> {
      * @param errorMsg 错误信息
      * @return BaseResponse 基础响应
      */
-    public static BaseResponse<String> fail(BaseCode respCode, String errorMsg) {
+    public static <T> BaseResponse<T> fail(BaseCode respCode, String errorMsg) {
         return BaseResponse.of(respCode.getCode(), errorMsg);
     }
 
@@ -121,7 +121,7 @@ public class BaseResponse<T> {
      * @param errorMsg  错误信息
      * @return BaseResponse 基础响应
      */
-    public static BaseResponse<String> fail(int errorCode, String errorMsg) {
+    public static <T> BaseResponse<T> fail(int errorCode, String errorMsg) {
         return BaseResponse.of(errorCode, errorMsg);
     }
 
