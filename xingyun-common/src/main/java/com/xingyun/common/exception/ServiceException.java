@@ -5,18 +5,18 @@
 package com.xingyun.common.exception;
 
 /**
- * 基础服务异常
+ * ServiceException
  *
  * @author yxuej
- * @since 2026-04-05
+ * @since 2026-04-12
  */
-public class BaseException extends RuntimeException {
+public class ServiceException extends RuntimeException {
     /**
      * 构造函数
      *
      * @param message 错误信息
      */
-    public BaseException(String message) {
+    public ServiceException(String message) {
         super(message);
     }
 
@@ -26,7 +26,7 @@ public class BaseException extends RuntimeException {
      * @param message 错误信息
      * @param cause   异常信息
      */
-    public BaseException(String message, Throwable cause) {
+    public ServiceException(String message, Throwable cause) {
         super(message, cause);
     }
 }

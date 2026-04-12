@@ -4,6 +4,7 @@
 
 package com.xingyun.common.user;
 
+import com.xingyun.common.base.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class SysUserVo {
+public class UserVo extends BaseEntity {
     /**
      * 用户ID
      */
@@ -46,7 +47,7 @@ public class SysUserVo {
     /**
      * 手机号码
      */
-    private String telephone;
+    private String phone;
 
     /**
      * 用户性别
@@ -64,16 +65,6 @@ public class SysUserVo {
     private String password;
 
     /**
-     * 账号状态（0正常 1停用）
-     */
-    private String status;
-
-    /**
-     * 删除标志（0代表存在 2代表删除）
-     */
-    private String delFlag;
-
-    /**
      * 最后登录IP
      */
     private String loginIp;
@@ -81,22 +72,22 @@ public class SysUserVo {
     /**
      * 最后登录时间
      */
-    private String loginDate;
+    private String loginTime;
 
     /**
-     * 最后更新时间
+     * 密码最后更新时间
      */
-    private String lastUpdateTime;
+    private String pwdUpdateTime;
 
     /**
      * 部门对象
      */
-    private SysDeptVo dept;
+    private DeptVo dept;
 
     /**
      * 角色对象
      */
-    private List<SysRoleVo> roles;
+    private List<RoleVo> roles;
 
     /**
      * 角色组

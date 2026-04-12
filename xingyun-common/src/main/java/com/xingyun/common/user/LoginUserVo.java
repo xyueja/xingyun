@@ -68,7 +68,7 @@ public class LoginUserVo implements UserDetails {
     /**
      * 用户信息
      */
-    private SysUserVo user;
+    private UserVo user;
 
     /**
      * 构造函数
@@ -79,12 +79,11 @@ public class LoginUserVo implements UserDetails {
     /**
      * 构造函数
      *
-     * @param userId      用户ID
      * @param user        系统用户信息
      * @param permissions 权限
      */
-    public LoginUserVo(Long userId, SysUserVo user, Set<String> permissions) {
-        this.userId = userId;
+    public LoginUserVo(UserVo user, Set<String> permissions) {
+        this.userId = user.getUserId();
         this.user = user;
         this.permissions = permissions;
     }

@@ -4,7 +4,7 @@
 
 package com.xingyun.uniportal.service;
 
-import com.xingyun.common.user.SysUserVo;
+import com.xingyun.common.user.UserVo;
 
 /**
  * UserService
@@ -12,12 +12,12 @@ import com.xingyun.common.user.SysUserVo;
  * @author yxuej
  * @since 2026-04-11
  */
-public interface SysUserService {
+public interface UserService {
     /**
      * 获取系统用户信息
      *
      * @param username 用户名
      * @return SysUserVo
      */
-    SysUserVo getUserByName(String username);
+    UserVo getUserByName(String username);
 }

@@ -4,9 +4,9 @@
 
 package com.xingyun.uniportal.service.impl;
 
-import com.xingyun.common.user.SysUserVo;
-import com.xingyun.uniportal.mapper.SysUserMapper;
-import com.xingyun.uniportal.service.SysUserService;
+import com.xingyun.common.user.UserVo;
+import com.xingyun.uniportal.mapper.UserMapper;
+import com.xingyun.uniportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +17,12 @@ import org.springframework.stereotype.Service;
  * @since 2026-04-11
  */
 @Service
-public class SysUserServiceImpl implements SysUserService {
+public class UserServiceImpl implements UserService {
     @Autowired
-    private SysUserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
-    public SysUserVo getUserByName(String username) {
+    public UserVo getUserByName(String username) {
         return userMapper.getUserByName(username);
     }
 }

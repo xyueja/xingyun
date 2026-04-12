@@ -4,6 +4,7 @@
 
 package com.xingyun.common.user;
 
+import com.xingyun.common.base.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
  * @since 2026-04-11
  */
 @Data
-public class SysDeptVo {
+public class DeptVo extends BaseEntity {
     /**
      * 部门ID
      */
@@ -28,9 +29,9 @@ public class SysDeptVo {
     private Long parentId;
 
     /**
-     * 祖级列表
+     * 部门路径
      */
-    private String ancestors;
+    private String deptPath;
 
     /**
      * 部门名称
@@ -40,7 +41,7 @@ public class SysDeptVo {
     /**
      * 显示顺序
      */
-    private Integer orderNum;
+    private int orderNum;
 
     /**
      * 负责人
@@ -58,16 +59,6 @@ public class SysDeptVo {
     private String email;
 
     /**
-     * 部门状态:0正常,1停用
-     */
-    private String status;
-
-    /**
-     * 删除标志（0代表存在 2代表删除）
-     */
-    private String delFlag;
-
-    /**
      * 父部门名称
      */
     private String parentName;
@@ -75,5 +66,5 @@ public class SysDeptVo {
     /**
      * 子部门
      */
-    private List<SysDeptVo> children = new ArrayList<>();
+    private List<DeptVo> children = new ArrayList<>();
 }
