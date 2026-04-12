@@ -4,6 +4,7 @@
 
 package com.xingyun.uniportal.service;
 
+import com.xingyun.common.constant.Status;
 import com.xingyun.common.exception.ServiceException;
 import com.xingyun.common.user.LoginUserVo;
 import com.xingyun.common.user.UserVo;
@@ -33,8 +34,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserVo userVo = userService.getUserByName(username);
         if (Objects.isNull(userVo)) {
-            log.info("登录用户：{} 不存在.", username);
+            log.error("登录用户：{} 不存在.", username);
             throw new ServiceException("[UserDetailsService.loadUserByUsername]: user not found");
+        }
+
+        int userStatus = userVo.getStatus();
+        if (Status.OK.getCode() != userStatus) {
+            log.error("登录用户：{} 不存在.", username);
+            throw new ServiceException("[UserDetailsService.loadUserByUsername]: user status not match, status is");
         }
         return new LoginUserVo(userVo, null);
     }

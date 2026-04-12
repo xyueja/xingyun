@@ -21,11 +21,6 @@ import java.util.Set;
 @Data
 public class LoginUserVo implements UserDetails {
     /**
-     * 用户ID
-     */
-    private Long userId;
-
-    /**
      * 用户唯一标识
      */
     private String token;
@@ -83,7 +78,6 @@ public class LoginUserVo implements UserDetails {
      * @param permissions 权限
      */
     public LoginUserVo(UserVo user, Set<String> permissions) {
-        this.userId = user.getUserId();
         this.user = user;
         this.permissions = permissions;
     }
