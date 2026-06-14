@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: xingyun-ppt
+server:
+  servlet:
+    context-path: /demo
